@@ -1,4 +1,4 @@
-import Expenses from "./components/Expenses";
+import Expenses from "./components/Expenses/Expenses";
 
 const expenses = [
   {
@@ -30,6 +30,12 @@ const expenses = [
     title: "Dining at Ritz hotel",
     amount: 200.12,
     date: new Date(2023, 1, 16),
+  },
+  {
+    id: "e6",
+    title: "Trip to Charlevoix",
+    amount: 679.5,
+    date: new Date(2023, 7, 16),
   },
 ];
 
