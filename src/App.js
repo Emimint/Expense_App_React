@@ -1,4 +1,4 @@
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 
 const expenses = [
   {
@@ -33,21 +33,14 @@ const expenses = [
   },
 ];
 
-function createExpenses(myExpense) {
-  // return <ExpenseItem expense = {myExpense}></ExpenseItem>;
-  return <ExpenseItem expense = { myExpense } />;
-}
-
 function App() {
-  
   return (
     <div>
-      <h1>💵 Expenses Manager 💰</h1>
+      <h1>💵 Expense Manager 💰</h1>
       <h2>An expense tracker app for your day-to-day expenses 🤗</h2>
-      {expenses.map(createExpenses)}
+      <Expenses expenses={expenses} />
     </div>
   );
-
 }
 
 export default App;
