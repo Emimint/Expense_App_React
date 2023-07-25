@@ -34,15 +34,8 @@ const expenses = [
 ];
 
 function createExpenses(myExpense) {
-  return (
-      <ExpenseItem
-        key={myExpense.id}
-        id={myExpense.id}
-        title={myExpense.title}
-        amount={myExpense.amount}
-        date={myExpense.date}
-      ></ExpenseItem>
-  );
+  // return <ExpenseItem expense = {myExpense}></ExpenseItem>;
+  return <ExpenseItem expense = { myExpense } />;
 }
 
 function App() {
@@ -50,9 +43,8 @@ function App() {
   return (
     <div>
       <h1>💵 Expenses Manager 💰</h1>
-      {
-        expenses.map( createExpenses )
-      }
+      <h2>An expense tracker app for your day-to-day expenses 🤗</h2>
+      {expenses.map(createExpenses)}
     </div>
   );
 
