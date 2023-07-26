@@ -1,24 +1,25 @@
 import React, { useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
-  const [enteredInput, setEnteredInput] = useState({
-    enteredTitle: "",
-    enteredAmount: "",
-    enteredDate: "",
-  });
+const ExpenseForm = (props) => {
+  const initialInput = {
+    title: "",
+    amount: "",
+    date: "",
+  };
+  const [enteredInput, setEnteredInput] = useState(initialInput);
 
   const inputChangeHandler = (id, value) => {
     setEnteredInput((previousState) => {
       if (id === "title") {
-        return { ...previousState, enteredTitle: value };
+        return { ...previousState, title: value };
       } else if (id === "amount") {
-        return { ...previousState, enteredAmount: value };
-      } else {
-        return { ...previousState, enteredDate: value };
+        return { ...previousState, amount: value };
+      } else if (id === "date") {
+        return { ...previousState, date: value };
       }
+      return initialInput;
     });
-    console.log(enteredInput);
   };
 
   /*  const titleChangeHandler = (e) => {
@@ -52,13 +53,21 @@ const ExpenseForm = () => {
     console.log(enteredInput.enteredDate);
   }; */
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+      enteredInput.date = new Date( enteredInput.date );
+      props.onSaveExpenseData(enteredInput);
+    inputChangeHandler(); // to reset all values to default
+  };
+
   return (
-    <form>
+    <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label> Title </label>
           <input
             type="text"
+            value={enteredInput.title}
             onChange={(e) => {
               inputChangeHandler("title", e.target.value);
             }}
@@ -68,6 +77,7 @@ const ExpenseForm = () => {
           <label> Amount </label>
           <input
             type="number"
+            value={enteredInput.amount}
             min="0.01"
             step="0.01"
             onChange={(e) => {
@@ -79,6 +89,7 @@ const ExpenseForm = () => {
           <label> Date </label>
           <input
             type="date"
+            value={enteredInput.date}
             min="2015-01-01"
             max="2023-07-26"
             onChange={(e) => {

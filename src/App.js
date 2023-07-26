@@ -25,15 +25,20 @@ const expenses = [
     title: "New Desk (Wooden)",
     amount: 450,
     date: new Date(2019, 12, 12),
-  }
+  },
 ];
+
+const addExpenseHandler = (newExpense) => {
+  expenses.push(newExpense);
+  console.log(expenses);
+};
 
 function App() {
   return (
     <div>
       <h1>💵 Expense Manager 💰</h1>
       <h2>An expense tracker app for your day-to-day expenses 🤗</h2>
-      <NewExpense/>
+      <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses expenses={expenses} />
     </div>
   );
