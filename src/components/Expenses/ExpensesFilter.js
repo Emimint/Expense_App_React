@@ -3,20 +3,19 @@ import Card from "../UI/Card";
 
 import "./ExpensesFilter.css";
 
-
 /*
 Forward year to Expenses
 Store the year as a state in Expenses
 
 */
 
-const ExpensesFilter = ({onYearSelection }) => {
+const ExpensesFilter = ({ onYearSelection }) => {
   return (
     <Card className="expenses">
       <div className="expenses-filter">
         <div className="expenses-filter__control">
           <label>Filter by year</label>
-                  <select
+          <select
             onChange={(e) => {
               onYearSelection(e.target.value);
             }}

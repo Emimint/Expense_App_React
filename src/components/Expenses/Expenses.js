@@ -7,15 +7,10 @@ import ExpensesFilter from "./ExpensesFilter";
 function Expenses({ expenses }) {
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
-  const onYearSelection = (selection) => {
-    setSelectedYear(selection);
-    console.log(selectedYear);
-  };
-
   return (
     <Card className="expenses">
       <div>{selectedYear}</div>
-      <ExpensesFilter onYearSelection={onYearSelection} />
+      <ExpensesFilter onYearSelection={setSelectedYear} />
       {expenses.map(ExpenseItem)}
     </Card>
   );
