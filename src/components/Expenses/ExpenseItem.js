@@ -15,7 +15,7 @@ const ExpenseItem = (props) => {
   // };
 
   return (
-    <Card className="expense-item">
+    <Card className="expense-item" key={props.date}>
       <ExpenseDate date={props.date}></ExpenseDate>
       <div className="expense-item__description">
         {/* <h2>{title}</h2> */}
