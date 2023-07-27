@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpenses/NewExpense";
+import Card from "./components/UI/Card";
 
 const INITIAL_EXPENSES = [
   {
@@ -30,17 +31,28 @@ const INITIAL_EXPENSES = [
 ];
 
 function App() {
-  const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+  const [ expenses, setExpenses ] = useState( INITIAL_EXPENSES );
+  const [ showDisplay, setDisplay ] = useState( false );
 
   const addExpenseHandler = (newExpense) => {
-    setExpenses((previousExpenses) => [newExpense, ...previousExpenses]);
+    setExpenses( ( previousExpenses ) => [ newExpense, ...previousExpenses ] );
+    toggleDisplay();
   };
+
+  const toggleDisplay = () => {
+    setDisplay(!showDisplay)
+  }
 
   return (
     <div>
       <h1>💵 Expense Manager 💰</h1>
       <h2>An expense tracker app for your day-to-day expenses 🤗</h2>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      {!showDisplay && (
+        <Card className="expenses">
+          <button onClick={toggleDisplay}>Add New Expense</button>
+        </Card>
+      )}
+      {showDisplay && <NewExpense onAddExpense={addExpenseHandler} />}
       <Expenses expenses={expenses} />
     </div>
   );
