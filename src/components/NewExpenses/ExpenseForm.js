@@ -14,7 +14,7 @@ const ExpenseForm = (props) => {
       if (id === "title") {
         return { ...previousState, title: value };
       } else if (id === "amount") {
-        return { ...previousState, amount: value };
+        return { ...previousState, amount: +value };
       } else if (id === "date") {
         return { ...previousState, date: value };
       }
