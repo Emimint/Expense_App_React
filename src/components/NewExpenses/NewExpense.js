@@ -22,7 +22,10 @@ const NewExpense = (props) => {
       {!showDisplay && <button onClick={toggleDisplay}>Add New Expense</button>}
       {showDisplay && (
         <div className="new-expense">
-          <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+          <ExpenseForm
+            onCancel={toggleDisplay}
+            onSaveExpenseData={saveExpenseDataHandler}
+          />
         </div>
       )}
     </Card>
