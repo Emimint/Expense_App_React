@@ -17,7 +17,7 @@ const ExpensesFilter = ({ onYearSelection }) => {
           <label>Filter by year</label>
           <select
             onChange={(e) => {
-              onYearSelection(e.target.value);
+              onYearSelection(Number(e.target.value));
             }}
           >
             <option value="2023">2023</option>
