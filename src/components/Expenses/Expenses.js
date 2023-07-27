@@ -12,9 +12,12 @@ function Expenses({ expenses }) {
   );
   return (
     <Card className="expenses">
-      <div>{selectedYear}</div>
       <ExpensesFilter onYearSelection={setSelectedYear} />
-      {selectedExpenses.map(ExpenseItem)}
+      {selectedExpenses.length === 0 ? (
+        <p>No expenses for the selected year</p>
+      ) : (
+        selectedExpenses.map(ExpenseItem)
+      )}
     </Card>
   );
 }
